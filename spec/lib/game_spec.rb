@@ -12,7 +12,7 @@ describe Game do
     subject { Game.new(player: 'Joe Doe') }
 
     context 'with an invalid frame' do
-      it 'returns an error' do
+      it 'raise an error' do
         expect do
           subject.add_frame('frame error')
         end.to raise_error(Errors::InvalidFrame)
@@ -37,7 +37,7 @@ describe Game do
         end
       end
 
-      it 'returns an error' do
+      it 'raise an error' do
         expect do
           subject.add_frame(frame)
         end.to raise_error(Errors::ExceededMaximumFrames)

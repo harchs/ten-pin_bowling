@@ -1,10 +1,21 @@
 # frozen_string_literal: false
 
 require_relative './errors/invalid_game.rb'
+require_relative './board_loader.rb'
 
 # Display a summary of all games
 class Board
   attr_reader :games
+
+  class << self
+    def generate_from_file(file_path)
+      rows = File
+             .readlines(file_path)
+             .reject { |line| line == "\n" }
+             .collect { |pf| pf.delete("\n").tr("\t", ' ').split(' ') }
+      BoardLoader.new(rows).call
+    end
+  end
 
   def initialize
     @games = []

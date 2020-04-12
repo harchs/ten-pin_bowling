@@ -1,15 +1,27 @@
 # frozen_string_literal: false
 
+require 'pathname'
+
 describe Board do
   describe 'generate an instance' do
     it { expect(Board.new.games).to be_empty }
+  end
+
+  describe '.generate_from_file' do
+    context 'with a wrong file path' do
+      it 'raise an error' do
+        expect do
+          Board.generate_from_file('/wrong/path')
+        end.to raise_error(StandardError)
+      end
+    end
   end
 
   describe '#add_game' do
     subject { Board.new }
 
     context 'with a invalid game' do
-      it 'returns an error' do
+      it 'raise an error' do
         expect do
           subject.add_game('frame')
         end.to raise_error(Errors::InvalidGame)

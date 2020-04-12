@@ -3,7 +3,7 @@
 describe RegularFrame do
   describe 'generate an instance' do
     context 'with a first_attempt with negative value' do
-      it 'returns an error' do
+      it 'raise an error' do
         expect do
           RegularFrame.new(first_attempt: -1)
         end.to raise_error(StandardError)
@@ -11,7 +11,7 @@ describe RegularFrame do
     end
 
     context 'with a first_attempt value different to F' do
-      it 'returns an error' do
+      it 'raise an error' do
         expect do
           RegularFrame.new(first_attempt: 'A')
         end.to raise_error(StandardError)
@@ -19,7 +19,7 @@ describe RegularFrame do
     end
 
     context 'with a first_attempt with value greater than 9' do
-      it 'returns an error' do
+      it 'raise an error' do
         expect do
           RegularFrame.new(first_attempt: 10)
         end.to raise_error(StandardError)
@@ -27,7 +27,7 @@ describe RegularFrame do
     end
 
     context 'with a first_attempt different to a number or a string' do
-      it 'returns an error' do
+      it 'raise an error' do
         expect do
           RegularFrame.new(first_attempt: { a: 1 })
         end.to raise_error(StandardError)
@@ -43,7 +43,7 @@ describe RegularFrame do
   describe '#second_attempt' do
     context 'with second attempt value different to F' do
       subject { RegularFrame.new(first_attempt: 0) }
-      it 'returns an error' do
+      it 'raise an error' do
         expect do
           subject.second_attempt = 'A'
         end.to raise_error(StandardError)
@@ -52,7 +52,7 @@ describe RegularFrame do
 
     context 'when second attempt makes exceeds the maximum of pins' do
       subject { RegularFrame.new(first_attempt: 0) }
-      it 'returns an error' do
+      it 'raise an error' do
         expect do
           subject.second_attempt = 11
         end.to raise_error(StandardError)
