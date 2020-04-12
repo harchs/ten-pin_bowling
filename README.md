@@ -22,7 +22,7 @@ Some of the following steps are not strictly required. i.e: you can use a differ
 # Getting Started
 
 ``
-  $ rake ten_pin_bowling:load 'spec/fixtures/normal_input.txt'
+  $ rake ten_pin_bowling:load 'spec/fixtures/two_players.txt'
 ``
 
 More fixtures are included in "spec/fixtures" folder.
